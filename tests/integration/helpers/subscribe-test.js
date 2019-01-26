@@ -32,6 +32,14 @@ module("Integration | Helper | subscribe", function(hooks) {
     assert.dom().hasText("Next Value", "Emits additional values");
   });
 
+  test("it emits nothing before the observable has produced values", async function(assert) {
+    await render(hbs`
+      {{subscribe observable}} 
+    `);
+
+    assert.dom().hasText("", "Nothing is returned from the helper");
+  });
+
   test("it unsubscribes when the helper is destroyed", async function(assert) {
     const subscribe = td.replace(this.observable, "subscribe");
     const subscription = td.object();
