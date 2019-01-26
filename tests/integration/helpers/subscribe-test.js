@@ -1,21 +1,22 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render, clearRender, settled } from "@ember/test-helpers";
+import { setupScheduler } from "ember-observable/test-support";
+import { render, clearRender } from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 import td from "testdouble";
-import { Observable } from "rxjs";
 
 module("Integration | Helper | subscribe", function(hooks) {
   setupRenderingTest(hooks);
+  setupScheduler(hooks);
 
   hooks.beforeEach(function() {
-    this.observable = new Observable(observer => {
-      this.next = value => {
-        observer.next(value);
-
-        return settled();
-      };
-    });
+    this.set(
+      "observable",
+      this.scheduler.createColdObservable("a--b", {
+        a: "Some Value",
+        b: "New Value"
+      })
+    );
   });
 
   test("it emits values from the observable", async function(assert) {
@@ -23,13 +24,13 @@ module("Integration | Helper | subscribe", function(hooks) {
       {{subscribe observable}}
     `);
 
-    await this.next("Some Value");
+    await this.scheduler.advanceTo(1);
 
     assert.dom().hasText("Some Value", "Emits the initial value");
 
-    await this.next("Next Value");
+    await this.scheduler.advanceTo(30);
 
-    assert.dom().hasText("Next Value", "Emits additional values");
+    assert.dom().hasText("New Value", "Emits the second value");
   });
 
   test("it emits nothing before the observable has produced values", async function(assert) {
