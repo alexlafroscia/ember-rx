@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 
 import currentTime from "../observables/current-time";
 
-export default class ApplicationController extends Controller {
+export default class IndexController extends Controller {
   constructor(...args) {
     super(...args);
 
