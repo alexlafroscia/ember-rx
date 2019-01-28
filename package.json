@@ -17,7 +17,8 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "test:all": "ember try:each"
+    "test:all": "ember try:each",
+    "release": "standard-version"
   },
   "dependencies": {
     "ember-auto-import": "^1.2.19",
@@ -53,6 +54,7 @@
     "eslint-plugin-node": "^8.0.1",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.8.0",
+    "standard-version": "^4.4.0",
     "testdouble": "^3.0.0"
   },
   "engines": {
