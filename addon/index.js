@@ -5,3 +5,5 @@ export { default as subscribe } from "./decorators/subscribe";
 export {
   default as fromPropertyChange
 } from "./observables/from-property-change";
+
+export { default as firstToPromise } from "./utils/first-to-promise";

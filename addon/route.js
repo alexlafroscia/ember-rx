@@ -1,12 +1,11 @@
 import Route from "@ember/routing/route";
-import { partition, take } from "rxjs/operators";
-import { Promise as RSVPPromise } from "rsvp";
 
 import {
   LATER_VALUE_SUBSCRIPTION,
   MOST_RECENT_VALUE,
   RESET
 } from "./-private/symbols";
+import firstToPromise from "./utils/first-to-promise";
 
 export default class ObservableModelRoute extends Route {
   deserialize() {
@@ -14,9 +13,7 @@ export default class ObservableModelRoute extends Route {
 
     const observable = super.deserialize(...arguments);
 
-    const [first, later] = observable.pipe(
-      partition((_, index) => index === 0)
-    );
+    const [promiseForFirst, later] = firstToPromise(observable);
 
     this[LATER_VALUE_SUBSCRIPTION] = later.subscribe({
       next: value => {
@@ -31,7 +28,7 @@ export default class ObservableModelRoute extends Route {
       }
     });
 
-    return first.pipe(take(1)).toPromise(RSVPPromise);
+    return promiseForFirst;
   }
 
   /**
