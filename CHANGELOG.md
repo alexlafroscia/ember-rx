@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/alexlafroscia/ember-rx/compare/v0.2.0...v0.3.0) (2019-01-30)
+
+
+### Features
+
+* **deps:** upgrade to latest release of RxJS ([7fddd46](https://github.com/alexlafroscia/ember-rx/commit/7fddd46))
+
+
+
 <a name="0.2.0"></a>
 
 # [0.2.0](https://github.com/alexlafroscia/ember-rx/compare/v0.1.0...v0.2.0) (2019-01-29)
