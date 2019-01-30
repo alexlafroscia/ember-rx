@@ -1,7 +1,7 @@
 {
   "name": "ember-rx",
   "version": "0.2.0",
-  "description": "RxJS integration for Ember.js",
+  "description": "RxJS 6 integration for Ember.js",
   "keywords": [
     "ember-addon",
     "rxjs",
