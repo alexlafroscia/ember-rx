@@ -1,4 +1,4 @@
-import Route from "ember-observable/route";
+import Route from "ember-rx/route";
 
 export default class ObservableModel extends Route {
   constructor() {

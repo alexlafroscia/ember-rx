@@ -1,7 +1,7 @@
 import { module, test } from "qunit";
-import { setupScheduler } from "ember-observable/test-support";
+import { setupScheduler } from "ember-rx/test-support";
 import td from "testdouble";
-import { firstToPromise } from "ember-observable";
+import { firstToPromise } from "ember-rx";
 import { Promise as RSVPPromise } from "rsvp";
 
 module("Unit | Utils | firstToPromise", function(hooks) {

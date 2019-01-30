@@ -1,6 +1,6 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { setupScheduler } from "ember-observable/test-support";
+import { setupScheduler } from "ember-rx/test-support";
 import { render, clearRender } from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 import td from "testdouble";

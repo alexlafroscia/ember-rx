@@ -1,8 +1,8 @@
 import { module, test } from "qunit";
-import { setupScheduler } from "ember-observable/test-support";
+import { setupScheduler } from "ember-rx/test-support";
 import td from "testdouble";
 import EmberObject from "@ember/object";
-import { fromPropertyChange } from "ember-observable";
+import { fromPropertyChange } from "ember-rx";
 
 class Dummy extends EmberObject {
   foo = "foo";

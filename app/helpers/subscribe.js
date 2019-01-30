@@ -1,1 +1,1 @@
-export { default, subscribe } from 'ember-observable/helpers/subscribe';
+export { default, subscribe } from "ember-rx/helpers/subscribe";

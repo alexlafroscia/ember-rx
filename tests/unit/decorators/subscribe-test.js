@@ -1,7 +1,7 @@
 import { module, test } from "qunit";
-import { setupScheduler } from "ember-observable/test-support";
+import { setupScheduler } from "ember-rx/test-support";
 import EmberObject from "@ember/object";
-import { subscribe } from "ember-observable";
+import { subscribe } from "ember-rx";
 
 module("Unit | Decorator | subscribe", function(hooks) {
   setupScheduler(hooks);

@@ -2,8 +2,8 @@ import { module, test } from "qunit";
 import { visit } from "@ember/test-helpers";
 import { setupApplicationTest } from "ember-qunit";
 import td from "testdouble";
-import { setupScheduler } from "ember-observable/test-support";
-import { LATER_VALUE_SUBSCRIPTION } from "ember-observable/-private/symbols";
+import { setupScheduler } from "ember-rx/test-support";
+import { LATER_VALUE_SUBSCRIPTION } from "ember-rx/-private/symbols";
 import { of, merge } from "rxjs";
 import { delay } from "rxjs/operators";
 

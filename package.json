@@ -1,9 +1,11 @@
 {
-  "name": "ember-observable",
+  "name": "ember-rx",
   "version": "0.2.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "RxJS integration for Ember.js",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "rxjs",
+    "observable"
   ],
   "repository": "",
   "license": "MIT",
