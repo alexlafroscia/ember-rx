@@ -129,5 +129,26 @@ module("Unit | Decorator | subscribe", function(hooks) {
         );
       });
     });
+
+    test("it un-subscribes when the object is destroyed", function(assert) {
+      this.scheduler.run(helpers => {
+        const i = SomeClass.create({
+          observable: helpers.cold("--a--b", {
+            a: 1,
+            b: 2
+          })
+        });
+
+        this.scheduler.flush();
+
+        i.willDestroy();
+
+        assert.equal(
+          i.observable.subscriptions[0].unsubscribedFrame,
+          5,
+          "Unsubscribed from the observable"
+        );
+      });
+    });
   });
 });

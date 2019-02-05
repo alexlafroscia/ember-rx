@@ -69,7 +69,7 @@ export default function subscribe(observableKey) {
           }
 
           willDestroy() {
-            this.removeListener(observableKey, this, resetSubscription);
+            this.removeObserver(observableKey, this, resetSubscription);
 
             if (this[SUBSCRIPTION]) {
               this[SUBSCRIPTION].unsubscribe();
