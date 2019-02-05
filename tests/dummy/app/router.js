@@ -1,12 +1,18 @@
-import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import AddonDocsRouter, { docsRoute } from "ember-cli-addon-docs/router";
+import config from "./config/environment";
 
-const Router = EmberRouter.extend({
+const Router = AddonDocsRouter.extend({
   location: config.locationType,
   rootURL: config.rootURL
 });
 
 Router.map(function() {
+  docsRoute(this, function() {
+    this.route("cookbook", function() {
+      this.route("count-prop-changes");
+    });
+  });
+
   this.route("testing", function() {
     this.route("observable-model");
   });

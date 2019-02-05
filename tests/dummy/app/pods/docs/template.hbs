@@ -1,0 +1,15 @@
+{{docs-header}}
+
+{{#docs-viewer as |viewer|}}
+  {{#viewer.nav as |nav|}}
+    {{nav.item 'Introduction' 'docs.index'}}
+
+    {{nav.section 'Cookbook'}}
+    {{nav.item 'What is this?' 'docs.cookbook.index'}}
+    {{nav.item 'Count Property Changes' 'docs.cookbook.count-prop-changes'}}
+  {{/viewer.nav}}
+
+  {{#viewer.main}}
+    {{outlet}}
+  {{/viewer.main}}
+{{/docs-viewer}}

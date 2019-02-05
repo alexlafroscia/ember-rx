@@ -7,6 +7,29 @@ import {
 } from "./-private/symbols";
 import firstToPromise from "./utils/first-to-promise";
 
+/**
+ * Base class for routes that return an `Observable` from the `model` hook,
+ * rather than a `Promise`.
+ *
+ * The loading state for the route will be transitioned to until the Observable
+ * emits its first value, just as if you had returned a `Promise`.
+ *
+ * Each time a new value is emitted from the returned `Observable`, the `model`
+ * property on the corresponding controller will be replaced with that value.
+ *
+ * ```javascript
+ * import { Route } from "ember-rx";
+ * import { inject as service } from "@ember-decorators/service";
+ *
+ * export default class PostsRoute extends Route {
+ *   @service apollo;
+ *
+ *   model() {
+ *     return this.apollo.watchQuery({ query: ... });
+ *   }
+ * }
+ * ```
+ */
 export default class ObservableModelRoute extends Route {
   deserialize() {
     this[RESET]();
@@ -33,6 +56,8 @@ export default class ObservableModelRoute extends Route {
 
   /**
    * Reset any state that we're hanging off the instance
+   *
+   * @hide
    */
   [RESET]() {
     if (this[LATER_VALUE_SUBSCRIPTION]) {
@@ -45,6 +70,7 @@ export default class ObservableModelRoute extends Route {
    * set up, we should take the most recent value as the model, not
    * the original one
    *
+   * @hide
    * @param {Ember.Controller} controller
    * @param {any} model
    */

@@ -1,0 +1,8 @@
+{{! BEGIN-SNIPPET count-prop-changes-example.hbs }}
+<input
+  value={{value}}
+  oninput={{action (mut value) value='target.value'}}
+/>
+
+Number of Changes: {{count}}
+{{! END-SNIPPET }}

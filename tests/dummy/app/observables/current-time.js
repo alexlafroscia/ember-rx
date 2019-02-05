@@ -1,3 +1,4 @@
+// BEGIN-SNIPPET current-time-observable.js
 import { Observable } from "rxjs";
 
 const currentTime = new Observable(observer => {
@@ -13,3 +14,4 @@ const currentTime = new Observable(observer => {
 });
 
 export default currentTime;
+// END-SNIPPET

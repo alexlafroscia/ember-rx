@@ -1,0 +1,15 @@
+{{docs-header}}
+
+{{docs-hero logo='ember' byline='Utilities for Using Observables in Ember'}}
+
+<div class='docs-container docs-md'>
+  {{#docs-demo as |demo|}}
+    {{#demo.example name='current-time.hbs'}}
+      {{subscribe currentTime}}
+    {{/demo.example}}
+
+    {{demo.snippet 'current-time.hbs'}}
+    {{demo.snippet 'current-time-controller.js'}}
+    {{demo.snippet 'current-time-observable.js' label='observables/current-time.js'}}
+  {{/docs-demo}}
+</div>
