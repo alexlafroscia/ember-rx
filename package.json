@@ -8,7 +8,7 @@
     "rxjs",
     "observable"
   ],
-  "repository": "",
+  "repository": "github:alexlafroscia/ember-rx",
   "license": "MIT",
   "author": "",
   "directories": {
