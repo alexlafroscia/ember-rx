@@ -7,7 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('observable-model');
+  this.route("testing", function() {
+    this.route("observable-model");
+  });
 });
 
 export default Router;

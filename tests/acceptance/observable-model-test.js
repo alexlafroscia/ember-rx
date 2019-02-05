@@ -12,7 +12,7 @@ module("Acceptance | observable model", function(hooks) {
   setupScheduler(hooks);
 
   test("it handles multiple values over time", async function(assert) {
-    this.owner.lookup("route:observable-model").model = () => {
+    this.owner.lookup("route:testing/observable-model").model = () => {
       return merge(
         of(1),
         of(2).pipe(delay(100, this.scheduler)),
@@ -20,7 +20,7 @@ module("Acceptance | observable model", function(hooks) {
       );
     };
 
-    await visit("/observable-model");
+    await visit("/testing/observable-model");
 
     assert.dom().hasText("1", "Model hook resolves with the initial value");
 
@@ -34,23 +34,23 @@ module("Acceptance | observable model", function(hooks) {
   });
 
   test("it takes the latest value if multiple are emitted before resolution", async function(assert) {
-    this.owner.lookup("route:observable-model").model = () => {
+    this.owner.lookup("route:testing/observable-model").model = () => {
       return of(1, 2);
     };
 
-    await visit("/observable-model");
+    await visit("/testing/observable-model");
 
     assert.dom().hasText("2", "Model used the later value");
   });
 
   module("unsubscribing from later values", function(hooks) {
     hooks.beforeEach(async function(assert) {
-      const route = this.owner.lookup("route:observable-model");
+      const route = this.owner.lookup("route:testing/observable-model");
       route.model = () => {
         return merge(of(1), of(2).pipe(delay(100, this.scheduler)));
       };
 
-      await visit("/observable-model");
+      await visit("/testing/observable-model");
 
       this.subscription = route[LATER_VALUE_SUBSCRIPTION];
       td.replace(this.subscription, "unsubscribe");
@@ -81,7 +81,7 @@ module("Acceptance | observable model", function(hooks) {
     });
 
     test("when the model hook is refreshed", async function(assert) {
-      await visit("/observable-model?page=2");
+      await visit("/testing/observable-model?page=2");
 
       assert.verify(
         this.subscription.unsubscribe(),
