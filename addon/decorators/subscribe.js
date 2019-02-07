@@ -43,7 +43,7 @@ import { assert } from "@ember/debug";
  * export default class ShowLastTransition extends Component {
  *   @service router;
  *
- *   @subscribe(i => fromEvent(this.router, 'routeWillChange'))
+ *   @subscribe(i => fromEvent(i.router, 'routeWillChange'))
  *   lastTransition
  * }
  * ```
