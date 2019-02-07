@@ -4,16 +4,11 @@ import { fromPropertyChange, subscribe } from "ember-rx";
 import { scan } from "rxjs/operators";
 
 export default class CountPropChanges extends Component {
-  value = "Initial Value";
+  value = "Replace this text";
 
-  @subscribe("value$") count = 0;
-
-  constructor() {
-    super(...arguments);
-
-    this.value$ = fromPropertyChange(this, "value").pipe(
-      scan(count => count + 1, 0)
-    );
-  }
+  @subscribe(i =>
+    fromPropertyChange(i, "value").pipe(scan(count => count + 1, 0))
+  )
+  count = 0;
 }
 // END-SNIPPET

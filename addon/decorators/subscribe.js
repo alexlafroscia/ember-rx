@@ -35,12 +35,25 @@ import { assert } from "@ember/debug";
  * If the dependent observable is replaced, the original subscription will
  * be unsubscribed from and the new observable subscribed to automatically.
  *
+ * Additionally, you can provide a function to the decorator that returns an
+ * Observable. In that case, the returned Observable will be the one that values
+ * are received from.
+ *
+ * ```javascript
+ * export default class ShowLastTransition extends Component {
+ *   @service router;
+ *
+ *   @subscribe(i => fromEvent(this.router, 'routeWillChange'))
+ *   lastTransition
+ * }
+ * ```
+ *
  * @param {string} observableKey
  */
 export default function subscribe(observableKey) {
   assert(
-    "Must be passed a property to listen to",
-    typeof observableKey === "string"
+    "Must be passed a property to listen to or function to create an observable from",
+    typeof observableKey === "string" || typeof observableKey === "function"
   );
 
   const SUBSCRIPTION = Symbol();
@@ -91,21 +104,31 @@ export default function subscribe(observableKey) {
             set(this, rest.key, value);
           });
         }
-
         return class extends klass {
           init() {
             super.init(...arguments);
 
-            this.addObserver(observableKey, this, resetSubscription);
+            let observable;
 
-            const observable = get(this, observableKey);
+            if (typeof observableKey === "string") {
+              this.addObserver(observableKey, this, resetSubscription);
+
+              observable = get(this, observableKey);
+            }
+
+            if (typeof observableKey === "function") {
+              observable = observableKey.apply(this, [this]);
+            }
+
             this[SUBSCRIPTION] = observable.subscribe(value => {
               set(this, rest.key, value);
             });
           }
 
           willDestroy() {
-            this.removeObserver(observableKey, this, resetSubscription);
+            if (typeof observableKey === "string") {
+              this.removeObserver(observableKey, this, resetSubscription);
+            }
 
             if (this[SUBSCRIPTION]) {
               this[SUBSCRIPTION].unsubscribe();
