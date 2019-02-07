@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/alexlafroscia/ember-rx/compare/v0.3.1...v0.4.0) (2019-02-07)
+
+
+### Bug Fixes
+
+* avoid sharing values between instances with `subscribe` ([9aab01e](https://github.com/alexlafroscia/ember-rx/commit/9aab01e))
+
+
+### Features
+
+* add `fromEvent` observable ([05582f3](https://github.com/alexlafroscia/ember-rx/commit/05582f3))
+* allow a callback to the `subscribe` decorator ([7ab8394](https://github.com/alexlafroscia/ember-rx/commit/7ab8394))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/alexlafroscia/ember-rx/compare/v0.3.0...v0.3.1) (2019-02-05)
 
