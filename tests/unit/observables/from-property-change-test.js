@@ -45,4 +45,21 @@ module("Unit | Observables | fromPropertyChange", function(hooks) {
       "Not called for the second change"
     );
   });
+
+  test("it removed the property observer when unsubscribing", function(assert) {
+    const instance = Dummy.create();
+    const removeObserver = td.replace(instance, "removeObserver");
+
+    const observer = td.function();
+    const subscription = fromPropertyChange(instance, "foo").subscribe(
+      observer
+    );
+
+    subscription.unsubscribe();
+
+    assert.verify(
+      removeObserver("foo", instance, td.matchers.isA(Function)),
+      "Removes the property observer when unsubscribing"
+    );
+  });
 });
