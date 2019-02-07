@@ -10,7 +10,7 @@ import { fromEventPattern } from "rxjs";
  * @param {string} eventName
  * @return {Observable}
  */
-export default function fromPropertyChange(subject, eventName) {
+export default function fromEvent(subject, eventName) {
   return fromEventPattern(
     handler => {
       subject.on(eventName, subject, handler);
