@@ -58,39 +58,11 @@ export default function subscribe(observableKey) {
 
   const SUBSCRIPTION = Symbol();
 
-  return ({ kind, descriptor, initializer, ...rest }) => {
-    assert("Must decorator a `field`", kind === "field");
-
-    delete descriptor.writable;
-
-    let lastValue,
-      hasEmittedValue = false;
+  return element => {
+    assert("Must decorator a `field`", element.kind === "field");
 
     return {
-      ...rest,
-      kind: "method",
-      descriptor: {
-        ...descriptor,
-        get() {
-          if (hasEmittedValue) {
-            return lastValue;
-          }
-
-          if (initializer) {
-            return initializer();
-          }
-        },
-        set(value) {
-          hasEmittedValue = true;
-          lastValue = value;
-
-          // Ensure the Ember KVO knows that the subscription property
-          // has updated
-          if (this.notifyPropertyChange) {
-            this.notifyPropertyChange(rest.key);
-          }
-        }
-      },
+      ...element,
       finisher: klass => {
         function resetSubscription() {
           // Unsubscribe from the old observable
@@ -101,7 +73,7 @@ export default function subscribe(observableKey) {
           // Set up the subscription to the new observable
           const observable = get(this, observableKey);
           this[SUBSCRIPTION] = observable.subscribe(value => {
-            set(this, rest.key, value);
+            set(this, element.key, value);
           });
         }
         return class extends klass {
@@ -121,7 +93,7 @@ export default function subscribe(observableKey) {
             }
 
             this[SUBSCRIPTION] = observable.subscribe(value => {
-              set(this, rest.key, value);
+              set(this, element.key, value);
             });
           }
 
