@@ -1,4 +1,5 @@
 export { default as Route } from "./route";
+export { default as scheduler } from "./scheduler";
 
 export { default as subscribe } from "./decorators/subscribe";
 

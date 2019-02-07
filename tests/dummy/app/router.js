@@ -11,6 +11,10 @@ Router.map(function() {
     this.route("cookbook", function() {
       this.route("count-prop-changes");
     });
+
+    this.route("features", function() {
+      this.route("scheduler");
+    });
   });
 
   this.route("testing", function() {
