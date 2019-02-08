@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/alexlafroscia/ember-rx/compare/v0.4.0...v0.5.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* rename `fromEvent` helper function ([64b4b95](https://github.com/alexlafroscia/ember-rx/commit/64b4b95))
+* use correct instance variable in `[@subscribe](https://github.com/subscribe)` example ([7f34727](https://github.com/alexlafroscia/ember-rx/commit/7f34727))
+
+
+### Features
+
+* add scheduler for Run Loop ([9a040fa](https://github.com/alexlafroscia/ember-rx/commit/9a040fa))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/alexlafroscia/ember-rx/compare/v0.3.1...v0.4.0) (2019-02-07)
 
