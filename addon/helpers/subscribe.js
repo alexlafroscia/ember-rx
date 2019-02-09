@@ -3,7 +3,7 @@ import BaseStreamHelper from "ember-stream-helper";
 /**
  * Helper for subscribing to an `Observable` and emitting the latest value
  *
- * By passing the an observable to the helper, the last value emitted will be
+ * By passing an observable to the helper, the last value emitted will be
  * returned. As new values are emitted, the returned value will update
  * automatically.
  *
