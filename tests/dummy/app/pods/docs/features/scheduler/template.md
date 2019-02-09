@@ -1,6 +1,6 @@
 # Run Loop Scheduler
 
-RxJS has the concept of a [Scheduler][rxjs-scheduler], which is can use to queue work that should happen sometime in the future. Many Observables or Operators that deal with "time" can take accept a Scheduler as an argument if you need to customize how this work is planned.
+RxJS has the concept of a [Scheduler][rxjs-scheduler], which is can use to queue work that should happen sometime in the future. Many Observables or Operators that deal with "time" can accept a Scheduler as an argument if you need to customize how this work is planned.
 
 Ember also has a means for scheduling tasks in the future; the [Run Loop][run-loop]. In order to schedule events from RxJS into the Run Loop, you can leverage the scheduler provided by `ember-rx`.
 
