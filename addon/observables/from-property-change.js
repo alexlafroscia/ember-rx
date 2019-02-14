@@ -1,5 +1,7 @@
-import { fromEventPattern } from "rxjs";
 import { get } from "@ember/object";
+import { fromEventPattern } from "rxjs";
+import { observeOn } from "rxjs/operators";
+import { scheduler as runloopScheduler } from "ember-rx";
 
 /**
  * Create an Observable from the values of a property.
@@ -23,5 +25,5 @@ export default function fromPropertyChange(subject, property) {
     (instance, prop) => {
       return get(instance, prop);
     }
-  );
+  ).pipe(observeOn(runloopScheduler));
 }

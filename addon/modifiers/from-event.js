@@ -1,5 +1,7 @@
 import Ember from "ember";
+import { scheduler as runloopScheduler } from "ember-rx";
 import { fromEvent } from "rxjs";
+import { observeOn } from "rxjs/operators";
 
 export default Ember._setModifierManager(
   () => ({
@@ -21,7 +23,9 @@ export default Ember._setModifierManager(
         observer = operatorOrObserver;
       }
 
-      let observable = fromEvent(element, eventName);
+      let observable = fromEvent(element, eventName).pipe(
+        observeOn(runloopScheduler)
+      );
 
       if (operator) {
         observable = observable.pipe(operator);

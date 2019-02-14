@@ -1,5 +1,7 @@
 import { get, set } from "@ember/object";
 import { assert } from "@ember/debug";
+import { observeOn } from "rxjs/operators";
+import { scheduler as runloopScheduler } from "ember-rx";
 
 /**
  * This function can be applied as a decorator to a class.
@@ -91,6 +93,8 @@ export default function subscribe(observableKey) {
             if (typeof observableKey === "function") {
               observable = observableKey.apply(this, [this]);
             }
+
+            observable = observable.pipe(observeOn(runloopScheduler));
 
             this[SUBSCRIPTION] = observable.subscribe(value => {
               set(this, element.key, value);
