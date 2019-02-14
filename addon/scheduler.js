@@ -1,5 +1,5 @@
 import { Scheduler, Subscription } from "rxjs";
-import { cancel, later, run } from "@ember/runloop";
+import { cancel, later, join } from "@ember/runloop";
 
 class RunLoopAction extends Subscription {
   constructor(scheduler, work) {
@@ -13,7 +13,7 @@ class RunLoopAction extends Subscription {
     if (delay) {
       this.timer = later(this, this.work, state, delay);
     } else {
-      run(this, this.work, state);
+      join(this, this.work, state);
     }
 
     return this;
