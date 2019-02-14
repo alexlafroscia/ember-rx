@@ -53,7 +53,7 @@ Because the events will be piped through the operator, only every other event wi
 
 ## Using a Subject
 
-If you want to multi-cast to different observers, you can also pass a [Subject][rxjs-subject] to `frorm-event`. Because Subjects are operators, this behavior "just works"!
+If you want to multi-cast to different observers, you can also pass a [Subject][rxjs-subject] to `from-event`. Since Subjects are observers, this behavior "just works"!
 
 ```js
 import Component from "@ember/component";
