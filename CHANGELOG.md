@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/alexlafroscia/ember-rx/compare/v0.5.0...v0.6.0) (2019-02-14)
+
+
+### Bug Fixes
+
+* grammar error `take accept` -> `accept` ([bef5e5e](https://github.com/alexlafroscia/ember-rx/commit/bef5e5e))
+* grammar error `the an` -> `an` ([ffcd349](https://github.com/alexlafroscia/ember-rx/commit/ffcd349))
+* **scheduler:** join current run loop if possible ([b0c53c2](https://github.com/alexlafroscia/ember-rx/commit/b0c53c2))
+* schedule created observables into the Runloop automatically ([81e6ef3](https://github.com/alexlafroscia/ember-rx/commit/81e6ef3))
+
+
+### Features
+
+* add `from-event` element modifier` ([1a60ddb](https://github.com/alexlafroscia/ember-rx/commit/1a60ddb))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/alexlafroscia/ember-rx/compare/v0.4.0...v0.5.0) (2019-02-08)
 
