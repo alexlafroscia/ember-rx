@@ -13,6 +13,7 @@ Router.map(function() {
     });
 
     this.route("features", function() {
+      this.route("element-modifier");
       this.route("scheduler");
     });
   });
