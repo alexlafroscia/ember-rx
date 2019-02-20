@@ -9,7 +9,7 @@ const Router = AddonDocsRouter.extend({
 Router.map(function() {
   docsRoute(this, function() {
     this.route("cookbook", function() {
-      this.route("count-prop-changes");
+      this.route("prop-history");
     });
 
     this.route("features", function() {

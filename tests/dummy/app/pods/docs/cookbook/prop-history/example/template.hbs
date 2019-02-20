@@ -1,9 +1,13 @@
-{{! BEGIN-SNIPPET count-prop-changes-example.hbs }}
+{{! BEGIN-SNIPPET prop-history-example.hbs }}
 <input
   value={{value}}
   placeholder="Type some stuff"
   oninput={{action (mut value) value='target.value'}}
 />
 
-Number of Changes: {{count}}
+<ol>
+  {{#each valueHistory as |value|}}
+    <li>{{value}}</li>
+  {{/each}}
+</ol>
 {{! END-SNIPPET }}
